@@ -1,0 +1,7 @@
+# ------------------------------------
+# -------- Frozen Soul MOTD ----------
+# ------------------------------------
+motd: '&l&f[FrozenMOTD] &2Welcome to Frozen Soul!  Don''t forget to claim your base!'
+motdJoin: '&l&f[FrozenMOTD] &2Please welcome &e%player% &2to Frozen Soul''s Test Server!'
+motdSys: '&l&f[FrozenMOTD] &bDefault Server MOTD'
+motdSound: 'ENTITY_WOLF_HOWL'

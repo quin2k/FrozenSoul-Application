@@ -1,0 +1,41 @@
+name: FrozenSoul_MOTD
+version: 0.2
+main: quin2k.fs.motd
+description: A work in progress...
+author: Quin2k
+
+commands:
+  mhelp:
+    usage: /<command>
+    description: View help for Frozen MOTD commands
+  motd:
+    usage: /<command>
+    description: View current MOTD
+  motdtoggle:
+    usage: /<command>
+    description: Disable MOTD announcement
+  motdset:
+    usage: /<command>
+    description: Set the ingame MOTD announcement
+  joinmotd:
+    usage: /<command>
+    description: View current Join MOTD
+  joinmotdset:
+    usage: /<command>
+    description: Set the Join MOTD
+  sysmotd:
+    usage: /<command>
+    description: View current System MOTD
+  sysmotdset:
+    usage: /<command>
+    description: Set the System MOTD
+  mreload:
+    usage: /<command>
+    description: View help for MOTD commands
+permissions:
+  motd:
+    description: Use all MOTD commands
+    default: op
+
+
+

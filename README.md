@@ -2,6 +2,7 @@
 Programming assignment as part of Frozen Soul Application Process
 
 Assignment:
+
 Using the Spigot API 1.9 create a plugin that meets the following criteria:
 
 Plugin supplies its own default config file that contains a message of the day. [DONE]

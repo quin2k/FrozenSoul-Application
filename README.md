@@ -1,7 +1,7 @@
 # FrozenSoul-Application
 Programming assignment as part of Frozen Soul Application Process
 
-Assignment:
+''Assignment:''
 
 Using the Spigot API 1.9 create a plugin that meets the following criteria:
 
@@ -22,7 +22,7 @@ When the plugin is unloaded:
 
 Once you've completed the project, upload it to github and reply with a link to the project
 and we will move forward to the next steps on the application. After 7 days, if the project
-is not uploaded for review, the application will be declined. [IN PROGRESS]
+is not uploaded for review, the application will be declined. [DONE]
 
 Author Note:
 I tried to go above and beyond - since both the Join Message and System Messages are referred

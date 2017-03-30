@@ -1,7 +1,7 @@
 # FrozenSoul-Application
 Programming assignment as part of Frozen Soul Application Process
 
-''Assignment:''
+*Assignment:*
 
 Using the Spigot API 1.9 create a plugin that meets the following criteria:
 

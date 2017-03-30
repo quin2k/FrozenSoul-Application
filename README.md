@@ -1,7 +1,7 @@
 # FrozenSoul-Application
-Programming assignment as part of Frozen Soul Application Process
+*Programming assignment as part of Frozen Soul Application Process*
 
-*Assignment:*
+**Assignment:**
 
 Using the Spigot API 1.9 create a plugin that meets the following criteria:
 
@@ -20,12 +20,7 @@ When the plugin is unloaded:
 - Send a sad message to console that the console is being unloaded. [DONE]
 - Cancel all running tasks. [DONE]
 
-Once you've completed the project, upload it to github and reply with a link to the project
-and we will move forward to the next steps on the application. After 7 days, if the project
-is not uploaded for review, the application will be declined. [DONE]
+Once you've completed the project, upload it to github and reply with a link to the project and we will move forward to the next steps on the application. After 7 days, if the project is not uploaded for review, the application will be declined. [DONE]
 
-Author Note:
-I tried to go above and beyond - since both the Join Message and System Messages are referred
-to as "MOTD" in some contexts, I set out to do all of them.  Sadly, some of it isn't actually
-functioning as intended which is why it is commented out.  I do have some additional features
-such as mhelp, mreload, motd, and joinmotd commands.
+**Author Note:**
+I tried to go above and beyond - since both the Join Message and System Messages are referred to as "MOTD" in some contexts, I set out to do all of them.  Sadly, some of it isn't actually functioning as intended which is why it is commented out.  Overall, it turned out well and is more than asked for.

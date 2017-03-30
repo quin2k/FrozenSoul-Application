@@ -1,34 +1,5 @@
 package quin2k.fs;
 
-/*
-Using the Spigot API 1.9 create a plugin that meets the following criteria:
-
-Plugin supplies its own default config file that contains a message of the day. [DONE]
-
-Performs the six tasks below.
-
-When the plugin is loaded:
-- Build the default config (if config is not present) with a single string for message of the
-  day (motd). [DONE]
-- Prints the message of the day to the console via configured motd. [DONE]
-- Starts a synchronous task to broadcast the message of the day every 10 minutes. [DONE]
-- Plays a sound to a player when they join the server. [DONE]
-
-When the plugin is unloaded:
-- Send a sad message to console that the console is being unloaded. [DONE]
-- Cancel all running tasks. [DONE]
-
-Once you've completed the project, upload it to github and reply with a link to the project
-and we will move forward to the next steps on the application. After 7 days, if the project
-is not uploaded for review, the application will be declined
-
-Author Note:
-I tried to go above and beyond - since both the Join Message and System Messages are referred
-to as "MOTD" in some contexts, I set out to do all of them.  Sadly, some of it isn't actually
-functioning as intended which is why it is commented out.  I do have some additional features
-such as mhelp, mreload, motd, and joinmotd commands.
- */
-
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -62,7 +33,7 @@ public class motd extends JavaPlugin implements Listener {
         cancelTask(task);
     }
 
-    public void cancelTask(BukkitTask taskId) {
+    private void cancelTask(BukkitTask taskId) {
         taskId.cancel();
     }
 
@@ -81,7 +52,7 @@ public class motd extends JavaPlugin implements Listener {
     }
 
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-        StringBuilder str = null;
+        StringBuilder str = new StringBuilder();
         String system;
         int i;
 
@@ -93,9 +64,9 @@ public class motd extends JavaPlugin implements Listener {
                 sender.sendMessage("==================[Frozen MOTD]===================");
                 sender.sendMessage("/mhelp: This help file");
                 sender.sendMessage("/motd: See the Message of the Day");
-                //sender.sendMessage("/motdset: Set a new Message of the Day");
+                sender.sendMessage("/motdset: Set a new Message of the Day");
                 sender.sendMessage("/joinmotd: See your Join Message");
-                //sender.sendMessage("/joinmotdset <text>: Set your Join Message");
+                sender.sendMessage("/joinmotdset <text>: Set your Join Message");
                 //sender.sendMessage("/sysmotd: See your System Message");
                 //sender.sendMessage("/sysmotdset <text>: Set your System Message");
                 sender.sendMessage("/mreload: Reload config.yml!");
@@ -114,7 +85,7 @@ public class motd extends JavaPlugin implements Listener {
             }
         }
 
-        /*
+
         if (command.getName().equalsIgnoreCase("motdset")) {
             if (!sender.hasPermission("motd")) {
                 sender.sendMessage("[FrozenMOTD] You don't have permission to change that.");
@@ -124,7 +95,7 @@ public class motd extends JavaPlugin implements Listener {
                 return true;
             } else {
                 for (i = 0; i < args.length; ++i) {
-                    str.append(args[i] + " ");
+                    str.append(args[i]).append(" ");
                 }
                 system = str.toString();
                 this.getConfig().set("motd", system);
@@ -135,7 +106,7 @@ public class motd extends JavaPlugin implements Listener {
                 return true;
             }
         }
-        */
+
         if (command.getName().equalsIgnoreCase("joinmotd")) {
             if (!sender.hasPermission("motd")) {
                 sender.sendMessage("[FrozenMOTD] You don't have permission to view that.");
@@ -146,19 +117,17 @@ public class motd extends JavaPlugin implements Listener {
                 sender.sendMessage("[FrozenMOTD] MOTD set to: " + system);
             }
         }
-        /*
+
         if (command.getName().equalsIgnoreCase("joinmotdset")) {
             if (!sender.hasPermission("motd")) {
                 sender.sendMessage("[FrozenMOTD] You don't have permission to change that.");
                 return true;
-            }
-            else if(args.length == 0) {
+            } else if (args.length == 0) {
                 sender.sendMessage("You need to input text after this command!");
                 return true;
-            }
-            else {
+            } else {
                 for (i = 0; i < args.length; ++i) {
-                    str.append(args[i] + " ");
+                    str.append(args[i]).append(" ");
                 }
                 system = str.toString();
                 this.getConfig().set("motdJoin", system);
@@ -169,7 +138,6 @@ public class motd extends JavaPlugin implements Listener {
                 return true;
             }
         }
-        */
         /*
         if (command.getName().equalsIgnoreCase("sysmotd")) {
             if (!sender.hasPermission("motd")) {
@@ -194,7 +162,7 @@ public class motd extends JavaPlugin implements Listener {
             }
             else {
                 for (i = 0; i < args.length; ++i) {
-                    str.append(args[i] + " ");
+                    str.append(args[i]).append(" ");
                 }
                 system = str.toString();
                 this.getConfig().set("motdSys", system);
@@ -213,6 +181,13 @@ public class motd extends JavaPlugin implements Listener {
             } else {
                 this.reloadConfig();
                 this.saveConfig();
+                cancelTask(task);
+                String motd = this.getConfig().getString("motd").replace("&", "§");
+                task = Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(this, new Runnable() {
+                    public void run() {
+                        Bukkit.getServer().broadcastMessage(motd);
+                    }
+                }, 0L, 600L); //currently 30 seconds for testing.
                 sender.sendMessage("[FrozenMOTD] Reload Complete!");
                 return true;
             }

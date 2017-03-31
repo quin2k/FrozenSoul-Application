@@ -25,7 +25,7 @@ public class motd extends JavaPlugin implements Listener {
             public void run() {
                 Bukkit.getServer().broadcastMessage(motd);
             }
-            }, 0L, 600L); //currently 30 seconds for testing.
+            }, 0L, 12000L); //currently 10 minutes.
     }
 
     public void onDisable() {
